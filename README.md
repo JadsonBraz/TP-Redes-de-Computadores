@@ -3,6 +3,7 @@
 ## Autores
 
 ANTONIO ALEX GOMES RODRIGUES
+
 JADSON BRAZ MUNIZ
 
 
@@ -16,17 +17,19 @@ O arquivo pode possuir qualquer tamanho e extensão.
 
 ## Compilar
 
-	gcc client.c -o client
+Para compilar os arquivos, entre na pasta do projeto e digite:
 
-	gcc server.c -o server
+	gcc cliente/client.c -o cliente/client
+
+	gcc servidor/server.c -o servidor/server
 
 ## Executar:
 
-Abra um terminal, navegue para a pasta com os arquivos e digite: 
+Abra um terminal, navegue para a pasta `servidor` e digite: 
 	
 	./server
 
-Abra um segundo terminal, navegue para a pasta com os arquivos e digite: 
+Abra um segundo terminal, navegue para a pasta `cliente` e digite: 
 
 	./client
 
