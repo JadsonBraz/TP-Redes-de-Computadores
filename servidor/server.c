@@ -5,14 +5,13 @@
 #include <time.h>
 #define SIZE 1024
 
-void write_file(char recvBuffer[SIZE], int sockfd, char *filename)
+void write_file(int sockfd, char *filename)
 {
 	int n;
 	FILE *fp;
 	char buffer[SIZE];
 
-	fp = fopen(filename, "w");
-	fprintf(fp, "%s", recvBuffer);
+	fp = fopen(filename, "wb");
 	while (1)
 	{
 		n = recv(sockfd, buffer, SIZE, 0);
@@ -22,7 +21,7 @@ void write_file(char recvBuffer[SIZE], int sockfd, char *filename)
 			return;
 		}
 		fprintf(fp, "%s", buffer);
-		bzero(buffer, SIZE);
+		bzero(buffer, SIZE);			// limpa o buffer
 	}
 	return;
 }
@@ -84,8 +83,9 @@ int main()
 		}
 		else
 		{
+			strcpy(filename, recvBuffer);
 			printf("Upando arquivo...\n");
-			write_file(recvBuffer, newSocket, filename);
+			write_file(newSocket, filename);
 			printf("Upload concluido.\n");
 			break;
 		}

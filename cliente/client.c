@@ -53,13 +53,14 @@ int main()
 		printf("Digite o nome do arquivo que será enviado: ");
 		scanf("%s", filename);
 
-		fp = fopen(filename, "r");
+		fp = fopen(filename, "rb");
 
 		if (fp == NULL)
 		{
 			perror("Erro ao ler arquivo");
 		}
 	}
+	send(clientSocket, filename, sizeof(filename), 0);
 	send_file(fp, clientSocket);
 	printf("Arquivo enviado com sucesso!\n");
 
